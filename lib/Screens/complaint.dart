@@ -11,16 +11,20 @@ class Complaint extends StatelessWidget {
     final controller = Get.put(ComplaintController());
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+      backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         title: const Text(
           'Submit Complaint',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF2196F3),
+        backgroundColor: Colors.blue[600],
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -29,13 +33,14 @@ class Complaint extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => ResponsePage()),
               );
             },
-            icon: Icon(Icons.feedback),
+            icon: const Icon(Icons.feedback_outlined, size: 22),
+            tooltip: 'View Responses',
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -43,15 +48,15 @@ class Complaint extends StatelessWidget {
               children: [
                 // Main Form Card
                 Container(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade200,
+                        color: Colors.black.withOpacity(0.04),
                         blurRadius: 10,
-                        offset: const Offset(0, 5),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
@@ -62,26 +67,34 @@ class Complaint extends StatelessWidget {
                       const Text(
                         'Category',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.grey,
+                          color: Color(0xFF475569),
                         ),
                       ),
                       const SizedBox(height: 8),
                       Obx(
                         () => Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: 44,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade300),
+                            border: Border.all(color: const Color(0xFFE2E8F0)),
                             borderRadius: BorderRadius.circular(12),
+                            color: const Color(0xFFF8FAFC),
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               value: controller.selectedCategory.value,
                               isExpanded: true,
-                              icon: Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.indigo.shade600,
+                              icon: const Icon(
+                                Icons.keyboard_arrow_down,
+                                color: Color(0xFF64748B),
+                                size: 20,
+                              ),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF1E293B),
                               ),
                               onChanged: (String? newValue) {
                                 if (newValue != null) {
@@ -107,12 +120,12 @@ class Complaint extends StatelessWidget {
                       const Text(
                         'Priority Level',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.grey,
+                          color: Color(0xFF475569),
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 8),
                       Obx(
                         () => Row(
                           children: [1, 2, 3]
@@ -125,14 +138,12 @@ class Complaint extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                         right: value < 3 ? 8 : 0,
                                       ),
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12,
-                                      ),
+                                      height: 36,
                                       decoration: BoxDecoration(
                                         color:
                                             controller.priority.value == value
                                             ? controller.getPriorityColor(value)
-                                            : Colors.grey.shade100,
+                                            : const Color(0xFFF8FAFC),
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                           color:
@@ -140,18 +151,21 @@ class Complaint extends StatelessWidget {
                                               ? controller.getPriorityColor(
                                                   value,
                                                 )
-                                              : Colors.grey.shade300,
+                                              : const Color(0xFFE2E8F0),
                                         ),
                                       ),
-                                      child: Text(
-                                        controller.getPriorityText(value),
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color:
-                                              controller.priority.value == value
-                                              ? Colors.white
-                                              : Colors.grey.shade600,
-                                          fontWeight: FontWeight.w600,
+                                      child: Center(
+                                        child: Text(
+                                          controller.getPriorityText(value),
+                                          style: TextStyle(
+                                            color:
+                                                controller.priority.value ==
+                                                    value
+                                                ? Colors.white
+                                                : const Color(0xFF64748B),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 13,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -168,35 +182,48 @@ class Complaint extends StatelessWidget {
                       const Text(
                         'Describe your complaint',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.grey,
+                          color: Color(0xFF475569),
                         ),
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
                         controller: controller.complaintController,
-                        maxLines: 6,
+                        maxLines: 5,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF1E293B),
+                        ),
                         decoration: InputDecoration(
                           hintText:
                               'Please provide detailed information about your complaint...',
-                          hintStyle: TextStyle(color: Colors.grey.shade400),
+                          hintStyle: const TextStyle(
+                            color: Color(0xFF94A3B8),
+                            fontSize: 14,
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
+                            borderSide: const BorderSide(
+                              color: Color(0xFFE2E8F0),
+                            ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Colors.indigo.shade600,
+                            borderSide: const BorderSide(
+                              color: Color(0xFF3B82F6),
                               width: 2,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
+                            borderSide: const BorderSide(
+                              color: Color(0xFFE2E8F0),
+                            ),
                           ),
-                          contentPadding: const EdgeInsets.all(16),
+                          contentPadding: const EdgeInsets.all(12),
+                          filled: true,
+                          fillColor: const Color(0xFFF8FAFC),
                         ),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
@@ -209,28 +236,30 @@ class Complaint extends StatelessWidget {
                         },
                       ),
 
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
 
                       // Submit Button
                       Obx(
                         () => SizedBox(
                           width: double.infinity,
-                          height: 56,
+                          height: 44,
                           child: ElevatedButton(
                             onPressed: controller.isLoading.value
                                 ? null
                                 : controller.submitComplaint,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF2196F3),
+                              backgroundColor: const Color(0xFF3B82F6),
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               elevation: 0,
+                              disabledBackgroundColor: const Color(0xFF94A3B8),
                             ),
                             child: controller.isLoading.value
                                 ? const SizedBox(
-                                    width: 24,
-                                    height: 24,
+                                    width: 20,
+                                    height: 20,
                                     child: CircularProgressIndicator(
                                       color: Colors.white,
                                       strokeWidth: 2,
@@ -238,15 +267,15 @@ class Complaint extends StatelessWidget {
                                   )
                                 : const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(Icons.send, color: Colors.white),
+                                      Icon(Icons.send, size: 18),
                                       SizedBox(width: 8),
                                       Text(
                                         'Submit Complaint',
                                         style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.white,
                                         ),
                                       ),
                                     ],
@@ -258,26 +287,38 @@ class Complaint extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
 
                 // Info Card
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
+                    color: const Color(0xFFF0F9FF),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.blue.shade200),
+                    border: Border.all(color: const Color(0xFFBAE6FD)),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.info_outline, color: Colors.blue.shade600),
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF3B82F6).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: const Icon(
+                          Icons.info_outline,
+                          color: Color(0xFF3B82F6),
+                          size: 16,
+                        ),
+                      ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
                           'Your complaint will be reviewed soon. You will receive updates here.',
                           style: TextStyle(
-                            color: Colors.blue.shade800,
-                            fontSize: 13,
+                            color: const Color(0xFF1E293B).withOpacity(0.8),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),

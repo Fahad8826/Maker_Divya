@@ -173,13 +173,14 @@ class _ResponseDetailPageState extends State<ResponseDetailPage> {
       appBar: AppBar(
         title: const Text(
           "Response Details",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
+        foregroundColor: Colors.white,
         backgroundColor: Color(0xFF2196F3),
         elevation: 2,
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
       ),

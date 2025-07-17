@@ -15,8 +15,9 @@ class ResponsePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Complaint Responses",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
+        foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF2196F3),
         centerTitle: true,
         elevation: 2,
@@ -181,9 +182,8 @@ class ResponsePage extends StatelessWidget {
 
                         const SizedBox(height: 4),
 
-                        /// Complaint ID
                         Text(
-                          "Complaint ID: ${data['complaint']}",
+                          "Complaint: ${data['complaint']}",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -192,20 +192,6 @@ class ResponsePage extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 8),
-
-                        /// Response Text
-                        Text(
-                          data['response'] ?? 'No response provided',
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
-                            height: 1.4,
-                          ),
-                        ),
-
-                        const SizedBox(height: 12),
 
                         /// Timestamp
                         Row(
