@@ -116,7 +116,6 @@ class DashboardController extends GetxController {
   Future<void> refreshDashboard() async {
     isRefreshing.value = true;
     try {
-     
       fetchOrderCounts();
 
       // Simulate API call delay

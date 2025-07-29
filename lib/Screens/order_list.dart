@@ -40,7 +40,7 @@ class OrderList extends StatelessWidget {
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
-      backgroundColor: Colors.blue[600],
+      backgroundColor: Color(0xFF9B0062),
       foregroundColor: Colors.white,
       elevation: 0,
 
@@ -227,7 +227,10 @@ class OrderList extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.blue[600]!, width: 2),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 246, 247, 249)!,
+              width: 2,
+            ),
           ),
           filled: true,
           fillColor: Colors.white,
@@ -304,10 +307,12 @@ class OrderList extends StatelessWidget {
           vertical: isTablet ? 10 : 6,
         ),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue[100] : Colors.grey[100],
+          color: isSelected ? Colors.white : Colors.grey[100],
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? Colors.blue[300]! : Colors.grey[300]!,
+            color: isSelected
+                ? Color(0xFF9B0062).withOpacity(1)
+                : Colors.grey[300]!,
             width: 1,
           ),
         ),
@@ -319,7 +324,9 @@ class OrderList extends StatelessWidget {
               style: TextStyle(
                 fontSize: isTablet ? 14 : 12,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                color: isSelected ? Colors.blue[700] : Colors.grey[700],
+                color: isSelected
+                    ? Color(0xFF9B0062).withOpacity(1)
+                    : Colors.grey[700],
               ),
             ),
             if (isSelected) ...[
@@ -329,7 +336,7 @@ class OrderList extends StatelessWidget {
                     ? Icons.arrow_downward
                     : Icons.arrow_upward,
                 size: isTablet ? 16 : 14,
-                color: Colors.blue[700],
+                color: Color(0xFF9B0062).withOpacity(1),
               ),
             ],
           ],
@@ -452,6 +459,7 @@ class OrderList extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.all(isTablet ? 24 : 20),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -490,7 +498,7 @@ class OrderList extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () => Get.back(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[600],
+                      backgroundColor: Color(0xFF9B0062).withOpacity(1),
                       foregroundColor: Colors.white,
                       padding: EdgeInsets.symmetric(
                         vertical: isTablet ? 20 : 16,

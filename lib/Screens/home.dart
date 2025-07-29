@@ -21,7 +21,7 @@ class Dashboard extends StatelessWidget {
           await controller.refreshDashboard();
           // Show success message after refresh
         },
-        color: Color(0xFF1E88E5),
+        color: Color(0xFF9B0062),
         backgroundColor: Colors.white,
         strokeWidth: 2.0,
         displacement: 40.0,
@@ -60,7 +60,7 @@ class Dashboard extends StatelessWidget {
       floating: true,
       pinned: true,
       elevation: 0,
-      backgroundColor: Color(0xFF1E88E5),
+      backgroundColor: Color(0xFF9B0062),
       automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
@@ -68,7 +68,11 @@ class Dashboard extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF1E88E5), Color(0xFF1976D2), Color(0xFF1565C0)],
+              colors: [
+                Color.fromARGB(255, 249, 2, 159),
+                Color.fromARGB(200, 223, 0, 141),
+                Color(0xFF9B0062),
+              ],
             ),
           ),
           child: SafeArea(
@@ -183,12 +187,12 @@ class Dashboard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Color(0xFF1E88E5).withOpacity(0.1),
+              color: Color(0xFF9B0062).withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               Icons.dashboard_rounded,
-              color: Color(0xFF1E88E5),
+              color: Color(0xFF9B0062),
               size: size.width * 0.06,
             ),
           ),
@@ -242,7 +246,7 @@ class Dashboard extends StatelessWidget {
             children: [
               Icon(
                 Icons.trending_up_rounded,
-                color: Color(0xFF4CAF50),
+                color: Color(0xFF9B0062),
                 size: size.width * 0.05,
               ),
               SizedBox(width: size.width * 0.02),
@@ -268,7 +272,7 @@ class Dashboard extends StatelessWidget {
                     child: LinearProgressIndicator(
                       backgroundColor: Colors.grey[200],
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        Color(0xFF1E88E5),
+                        Color(0xFF9B0062),
                       ),
                       minHeight: 8,
                     ),
@@ -308,7 +312,7 @@ class Dashboard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: size.width * 0.04,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF1E88E5),
+                        color: Color(0xFF9B0062),
                       ),
                     ),
                   ],
@@ -320,7 +324,7 @@ class Dashboard extends StatelessWidget {
                     value: progress,
                     backgroundColor: Colors.grey[200],
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      Color(0xFF1E88E5),
+                      Color(0xFF9B0062),
                     ),
                     minHeight: 8,
                   ),
@@ -357,7 +361,7 @@ class Dashboard extends StatelessWidget {
               'Total Orders',
               '${controller.orderCount.value}',
               Icons.shopping_cart_rounded,
-              Color(0xFF2196F3),
+              Color(0xFF9B0062),
               size,
             ),
           ),
@@ -367,7 +371,7 @@ class Dashboard extends StatelessWidget {
               'Pending',
               '${controller.pendingCount.value}',
               Icons.access_time_rounded,
-              Color(0xFFFF9800),
+              Color(0xFF9B0062),
               size,
             ),
           ),
@@ -377,7 +381,7 @@ class Dashboard extends StatelessWidget {
               'Out for Delivery',
               '${controller.outForDeliveryCount.value}',
               Icons.local_shipping_rounded,
-              Color(0xFFE91E63),
+              Color(0xFF9B0062),
               size,
             ),
           ),
@@ -387,7 +391,7 @@ class Dashboard extends StatelessWidget {
               'Delivered',
               '${controller.inProgressCount.value}',
               Icons.check_circle_rounded,
-              Color(0xFF4CAF50),
+              Color(0xFF9B0062),
               size,
             ),
           ),
@@ -518,7 +522,7 @@ class Dashboard extends StatelessWidget {
           title: 'Free Stocks',
           subtitle: 'Manage inventory and stock levels',
           icon: Icons.inventory_2_rounded,
-          iconColor: Color(0xFF4CAF50),
+          iconColor: Color(0xFF9B0062),
           onTap: () => Get.offAll(() => FreeStocks()),
           size: size,
         ),
@@ -526,7 +530,7 @@ class Dashboard extends StatelessWidget {
           title: 'Order List',
           subtitle: 'View and manage all orders',
           icon: Icons.list_alt_rounded,
-          iconColor: Color(0xFF2196F3),
+          iconColor: Color(0xFF9B0062),
           onTap: () => Get.to(() => OrderList()),
           size: size,
         ),
@@ -534,7 +538,7 @@ class Dashboard extends StatelessWidget {
           title: 'Complaints',
           subtitle: 'Handle customer complaints',
           icon: Icons.report_problem_rounded,
-          iconColor: Color(0xFFFF9800),
+          iconColor: Color(0xFF9B0062),
           onTap: () => Get.to(() => Complaint()),
           size: size,
         ),
@@ -637,7 +641,7 @@ class Dashboard extends StatelessWidget {
               controller.logout();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF1E88E5),
+              backgroundColor: Color(0xFF9B0062),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),

@@ -12,150 +12,156 @@ class Signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            children: [
-              Positioned(
-                top: MediaQuery.of(context).size.height * -0.2,
-                right: 0,
-                left: 0,
-                child: Image.asset(
-                  'assets/images/blue_top.png',
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * 0.52,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: 98),
+                // Logo section
+                Container(
+                  height: 80,
+                  margin: const EdgeInsets.only(bottom: 48),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
 
-              Positioned(
-                top: MediaQuery.of(context).size.height * .18,
-                left: 30,
-                right: 30,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * 0.25,
+                // Welcome text
+                Text(
+                  "Welcome Back",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF9B0062),
+                    letterSpacing: -0.5,
+                  ),
                 ),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.38,
-                left: 30,
-                right: 30,
-                child: Column(
-                  children: [
-                    Text(
-                      "Welcome Back",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.035,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF030047),
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "SIGN IN",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.025,
-                        color: Color.fromARGB(255, 63, 97, 209),
-                      ),
-                    ),
-                  ],
+
+                Text(
+                  "Sign in to continue",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[600],
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.5,
-                left: 30,
-                right: 30,
-                child: TextField(
+
+                const SizedBox(height: 48),
+
+                // Email/Phone field
+                TextField(
                   controller: controller.emailOrPhoneController,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      Icons.email_outlined,
-                      color: Color(0xFF030047),
-                    ),
-                    labelText: "Email or Phone Number",
+                    labelText: "Email or Phone",
                     labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 136, 199),
+                      color: Colors.grey[600],
+                      fontSize: 16,
+                    ),
+                    prefixIcon: Icon(
+                      Icons.person_outline,
+                      color: Color(0xFF9B0062),
+                      size: 20,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.grey[300]!),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 2,
-                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.grey[300]!),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(
-                        color: Color(0xFF030047),
+                        color: Color(0xFF9B0062),
                         width: 2,
                       ),
                     ),
                     filled: true,
-                    fillColor: Color(0xFFE1E5F2),
+                    fillColor: Colors.grey[50],
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.6,
-                left: 30,
-                right: 30,
-                child: Obx(
+
+                const SizedBox(height: 16),
+
+                // Password field
+                Obx(
                   () => TextField(
                     controller: controller.passwordController,
                     obscureText: !controller.isPasswordVisible.value,
                     decoration: InputDecoration(
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 16,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        color: Color(0xFF9B0062),
+                        size: 20,
+                      ),
                       suffixIcon: IconButton(
                         icon: Icon(
                           controller.isPasswordVisible.value
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Color(0xFF030047),
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.grey[600],
+                          size: 20,
                         ),
                         onPressed: controller.togglePasswordVisibility,
                       ),
-                      labelText: "Password",
-                      labelStyle: TextStyle(
-                        color: Color.fromARGB(255, 117, 136, 199),
-                      ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 2,
-                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(
-                          color: Color(0xFF030047),
+                          color: Color(0xFF9B0062),
                           width: 2,
                         ),
                       ),
                       filled: true,
-                      fillColor: Color(0xFFE1E5F2),
+                      fillColor: Colors.grey[50],
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 16,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              Positioned(
-                bottom: MediaQuery.of(context).size.height * 0.22,
-                left: 30,
-                right: 30,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * .07,
+                const SizedBox(height: 32),
+
+                // Sign in button
+                SizedBox(
+                  height: 52,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFFCC3E),
+                      backgroundColor: Color(0xFF9B0062),
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                     onPressed: () async {
                       final input = controller.emailOrPhoneController.text
@@ -164,12 +170,23 @@ class Signin extends StatelessWidget {
                           .trim();
 
                       if (input.isEmpty || password.isEmpty) {
-                        Get.snackbar("Error", "Please fill in both fields");
+                        Get.snackbar(
+                          "Error",
+                          "Please fill in both fields",
+                          backgroundColor: Colors.red[50],
+                          colorText: Colors.red[700],
+                          borderRadius: 8,
+                          margin: const EdgeInsets.all(16),
+                        );
                         return;
                       }
 
                       Get.dialog(
-                        Center(child: CircularProgressIndicator()),
+                        Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF9B0062),
+                          ),
+                        ),
                         barrierDismissible: false,
                       );
 
@@ -184,27 +201,39 @@ class Signin extends StatelessWidget {
                         Get.snackbar(
                           "Success",
                           "Signed in successfully",
-                          backgroundColor: Colors.yellow,
+                          backgroundColor: Colors.green[50],
+                          colorText: Colors.green[700],
+                          borderRadius: 8,
+                          margin: const EdgeInsets.all(16),
                         );
                       } else {
                         Get.snackbar(
                           "Login Failed",
-                          "Please Enter valid email, phone number, or password",
+                          "Please enter valid credentials",
+                          backgroundColor: Colors.red[50],
+                          colorText: Colors.red[700],
+                          borderRadius: 8,
+                          margin: const EdgeInsets.all(16),
                         );
                       }
                     },
                     child: Text(
-                      "SIGN IN",
-                      style: TextStyle(fontSize: 18, color: Color(0xFF030047)),
+                      "Sign In",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.5,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),
-      
     );
   }
 }

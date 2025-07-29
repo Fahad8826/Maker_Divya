@@ -18,7 +18,7 @@ class ResponsePage extends StatelessWidget {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         foregroundColor: Colors.white,
-        backgroundColor: const Color(0xFF2196F3),
+        backgroundColor: Color(0xFF9B0062).withOpacity(1),
         centerTitle: true,
         elevation: 2,
       ),

@@ -25,7 +25,7 @@ class Profile extends StatelessWidget {
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(
-            child: CircularProgressIndicator(color: Color(0xFF3B82F6)),
+            child: CircularProgressIndicator(color: Color(0xFF9B0062)),
           );
         }
 
@@ -76,7 +76,7 @@ class Profile extends StatelessWidget {
                                 )
                               : CircleAvatar(
                                   radius: 60,
-                                  backgroundColor: const Color(0xFF3B82F6),
+                                  backgroundColor: const Color(0xFF9B0062),
                                   child: Text(
                                     _getInitials(data['name'] ?? ''),
                                     style: const TextStyle(
@@ -94,7 +94,7 @@ class Profile extends StatelessWidget {
                             width: 32,
                             height: 32,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF3B82F6),
+                              color: const Color(0xFF9B0062),
                               shape: BoxShape.circle,
                               border: Border.all(color: Colors.white, width: 2),
                             ),
@@ -202,44 +202,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              // Action Buttons
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 16),
-              //   child: Column(
-              //     children: [
-              //       SizedBox(
-              //         width: double.infinity,
-              //         child: OutlinedButton.icon(
-              //           onPressed: () async {
-              //             // Example: Clear user session and navigate to login screen
-              //             await controller
-              //                 .logout(); // Implement this in your ProfileController
-              //             Get.offAllNamed(
-              //               '/login',
-              //             ); // Replace '/login' with your login route
-              //           },
-              //           icon: const Icon(Icons.settings_outlined),
-              //           label: const Text(
-              //             'Log Out',
-              //             style: TextStyle(
-              //               color: Color.fromARGB(255, 26, 67, 121),
-              //             ),
-              //           ),
-              //           style: OutlinedButton.styleFrom(
-              //             foregroundColor: const Color(0xFF64748B),
-              //             padding: const EdgeInsets.symmetric(vertical: 16),
-              //             shape: RoundedRectangleBorder(
-              //               borderRadius: BorderRadius.circular(12),
-              //             ),
-              //             side: const BorderSide(
-              //               color: Color.fromARGB(255, 26, 67, 121),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+
               const SizedBox(height: 32),
             ],
           ),

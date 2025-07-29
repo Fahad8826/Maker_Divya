@@ -71,7 +71,7 @@ class _FreeStocksState extends State<FreeStocks> {
         onPressed: () => Get.to(() => const Dashboard()),
       ),
       elevation: 0,
-      backgroundColor: Colors.blue[600],
+      backgroundColor: Color(0xFF9B0062),
       foregroundColor: Colors.white,
       systemOverlayStyle: SystemUiOverlayStyle.light,
       title: const Text(

@@ -26,7 +26,7 @@ class OrderDetailPage extends StatelessWidget {
           'Order #${orderData['orderId'] ?? 'N/A'}',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Color(0xFF9B0062).withOpacity(1),
         foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,

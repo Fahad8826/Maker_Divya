@@ -18,11 +18,11 @@ class Complaint extends StatelessWidget {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         foregroundColor: Colors.white,
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Color(0xFF9B0062).withOpacity(1),
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+          icon: const Icon(Icons.arrow_back, size: 20),
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
@@ -211,7 +211,7 @@ class Complaint extends StatelessWidget {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
-                              color: Color(0xFF3B82F6),
+                              color: Color.fromARGB(255, 239, 239, 240),
                               width: 2,
                             ),
                           ),
@@ -248,7 +248,7 @@ class Complaint extends StatelessWidget {
                                 ? null
                                 : controller.submitComplaint,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF3B82F6),
+                              backgroundColor: Color(0xFF9B0062).withOpacity(1),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -302,7 +302,12 @@ class Complaint extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF3B82F6).withOpacity(0.1),
+                          color: const Color.fromARGB(
+                            255,
+                            250,
+                            251,
+                            252,
+                          ).withOpacity(1),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: const Icon(

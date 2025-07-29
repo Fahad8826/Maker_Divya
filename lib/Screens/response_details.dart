@@ -55,7 +55,7 @@ class _ResponseDetailPageState extends State<ResponseDetailPage> {
         });
       } else if (mounted) {
         setState(() {
-          adminEmail = 'Admin Not Found';
+          adminEmail = 'Admin ';
         });
       }
     } catch (e) {
@@ -176,7 +176,7 @@ class _ResponseDetailPageState extends State<ResponseDetailPage> {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF2196F3),
+        backgroundColor: Color(0xFF9B0062).withOpacity(1),
         elevation: 2,
         centerTitle: true,
         leading: IconButton(
