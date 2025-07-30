@@ -19,8 +19,9 @@ class Profile extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+        foregroundColor: Colors.white,
+        backgroundColor: Color(0xFF9B0062).withOpacity(1),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Obx(() {
         if (controller.isLoading.value) {

@@ -228,7 +228,7 @@ class OrderList extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: const Color.fromARGB(255, 246, 247, 249)!,
+              color: const Color.fromARGB(255, 246, 247, 249),
               width: 2,
             ),
           ),
@@ -271,12 +271,12 @@ class OrderList extends StatelessWidget {
                   children: [
                     _buildSortChip('Date', 'createdAt', controller, context),
                     SizedBox(width: isTablet ? 12 : 8),
-                    _buildSortChip(
-                      'Delivery',
-                      'deliveryDate',
-                      controller,
-                      context,
-                    ),
+                    // _buildSortChip(
+                    //   'Delivery',
+                    //   'deliveryDate',
+                    //   controller,
+                    //   context,
+                    // ),
                     SizedBox(width: isTablet ? 12 : 8),
                     _buildSortChip('Order ID', 'orderId', controller, context),
                   ],
@@ -532,7 +532,6 @@ class OrderList extends StatelessWidget {
     const statuses = [
       'pending',
       'accepted',
-      'inprogress',
       'sent out for delivery',
       'delivered',
     ];
