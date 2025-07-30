@@ -457,7 +457,7 @@ class Signin extends StatelessWidget {
 
                               if (input.isEmpty || password.isEmpty) {
                                 Get.snackbar(
-                                  "Error",
+                                  "Oops!",
                                   "Please fill in both fields",
                                   backgroundColor: Colors.red[50],
                                   colorText: Colors.red[700],

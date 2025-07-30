@@ -60,7 +60,7 @@ class OrderDetailController extends GetxController {
       _checkAndAutoUpdateDeliveryStatus();
     } catch (e) {
       Get.snackbar(
-        'Error',
+        'Oops!',
         'Failed to update status: $e',
         backgroundColor: Colors.red,
         colorText: Colors.white,

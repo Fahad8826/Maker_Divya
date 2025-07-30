@@ -66,7 +66,7 @@ class PasswordController extends GetxController {
       }
 
       Get.snackbar(
-        'Error',
+        'Oops!',
         errorMessage,
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,

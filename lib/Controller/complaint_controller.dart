@@ -28,7 +28,7 @@ class ComplaintController extends GetxController {
       final user = FirebaseAuth.instance.currentUser;
       if (user == null) {
         Get.snackbar(
-          'Error',
+          'Oops!',
           'Please log in to submit a complaint',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red.shade100,
@@ -80,7 +80,7 @@ class ComplaintController extends GetxController {
       priority.value = 1;
     } catch (e) {
       Get.snackbar(
-        'Error',
+        'Oops!',
         'Failed to submit complaint. Please try again.',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red.shade100,
