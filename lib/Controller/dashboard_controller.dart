@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:makers/Screens/signin.dart';
 
@@ -19,6 +20,7 @@ class DashboardController extends GetxController {
     super.onInit();
     refreshDashboard();
     fetchOrderCounts();
+    initFCM(FirebaseAuth.instance.currentUser!.uid);
     ever(orderCount, (_) {
       final now = DateTime.now();
       if (lastFetchedMonth == null ||
@@ -27,6 +29,23 @@ class DashboardController extends GetxController {
         fetchOrderCounts();
       }
     });
+  }
+
+  void initFCM(String uid) async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    // Request permission (especially important on iOS)
+    NotificationSettings settings = await messaging.requestPermission();
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      String? token = await messaging.getToken();
+      if (token != null) {
+        await FirebaseFirestore.instance.collection('users').doc(uid).update({
+          'fcmToken': token,
+        });
+        print("FCM Token saved: $token");
+      }
+    }
   }
 
   void fetchOrderCounts() async {

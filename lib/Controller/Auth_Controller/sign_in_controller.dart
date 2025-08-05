@@ -266,7 +266,7 @@ class SigninController extends GetxController {
       } else if (e.code == 'network-request-failed') {
         errorMessage = 'No internet connection. Please try again.';
       } else {
-        errorMessage = 'Authentication error: ${e.message}';
+        errorMessage = 'Oops!: ${e.message}';
       }
       return errorMessage;
     } catch (e) {
