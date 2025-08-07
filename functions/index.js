@@ -37,8 +37,6 @@ exports.sendNotificationOnOrder = onDocumentCreated('Orders/{orderId}', async (e
   await getMessaging().send(message);
 });
 
-
-
 exports.notifyMakerOnOrderCancel = onDocumentUpdated('Orders/{orderId}', async (event) => {
   const beforeData = event.data.before.data();
   const afterData = event.data.after.data();
@@ -79,3 +77,4 @@ exports.notifyMakerOnOrderCancel = onDocumentUpdated('Orders/{orderId}', async (
     console.log("Notification sent to maker:", makerId);
   }
 });
+ 
